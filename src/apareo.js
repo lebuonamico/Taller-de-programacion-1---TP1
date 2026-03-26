@@ -5,6 +5,36 @@
  * @returns {number[]} un nuevo array de números ordenados
  */
 function combinarDosArrays(arrA, arrB) {
+    const arrCombinado = []
+
+    let i = 0, j = 0
+
+    // Mientras haya elementos en alguno de los dos arrays, continúa el loop
+    while (i < arrA.length || j < arrB.length) {
+        // Si A ya se termino, agrego lo que queda de B
+        if (i >= arrA.length) {
+            arrCombinado.push(arrB[j])
+            j++
+        // Si B ya se termino, agrego lo que queda de A
+        } else if (j >= arrB.length) {
+            arrCombinado.push(arrA[i])
+            i++
+        // Se agrega si el elemento actual de A es menor que el de B
+        } else if (arrA[i] < arrB[j]) {
+            arrCombinado.push(arrA[i])
+            i++
+         // Se agrega si el elemento actual de B es menor que el de A
+        } else if (arrB[j] < arrA[i]) {
+            arrCombinado.push(arrB[j])
+            j++
+        // Caso que ambos valores sean iguales, agrega el valor del arrayA solamente y avanza ambos indices
+        } else {
+            arrCombinado.push(arrA[i])
+            i++
+            j++
+        }
+    }
+    return arrCombinado
 }
 
 /**
@@ -13,6 +43,14 @@ function combinarDosArrays(arrA, arrB) {
  * @returns {nuber[]} el nuevo array de números ordenados
  */
 function combinarNArrays(arrs) {
+    let arrCombinado = []
+    for (const arr of arrs) {
+        arrCombinado = combinarDosArrays(arrCombinado, arr)
+    }
+    return arrCombinado
 }
 
 // exportar ambas funciones
+export default {
+    combinarDosArrays,combinarNArrays
+}

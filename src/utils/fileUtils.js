@@ -6,7 +6,11 @@ import fs from 'fs'
  * @return {string} el texto leído
  */
 function leerArchivoComoString(ruta) {
+    try {
         return fs.readFileSync(ruta, 'utf-8')
+    } catch (error) {
+        console.log("Error al intentar leer un archivo como string: " + error.message);
+    }
 }
 
 /**
@@ -15,11 +19,15 @@ function leerArchivoComoString(ruta) {
  * @param {string} texto 
  */
 function escribirTextoEnArchivo(ruta, texto, shouldCreateIfNotExists) {
-    if (!fs.existsSync(ruta) && !shouldCreateIfNotExists) {
-        throw new Error("el archivo no existe");
+    try {
+        if (!fs.existsSync(ruta) && !shouldCreateIfNotExists) {
+            throw new Error("el archivo no existe");
+        }
+        fs.writeFileSync(ruta, texto, 'utf-8');
+    } catch (error) {
+        console.log("Error al intentar escribir texto en un archivo: " + error.message);
     }
-    fs.writeFileSync(ruta, texto, 'utf-8');
 }
 
 // exportar ambas funciones
-export { leerArchivoComoString, escribirTextoEnArchivo };
+export default { leerArchivoComoString, escribirTextoEnArchivo };
