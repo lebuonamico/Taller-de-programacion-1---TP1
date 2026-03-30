@@ -10,4 +10,11 @@ console.log("--------------------------------------------------------")
 espacioUno()
 }
 
-export default{espacioUno,espacioDos,separador}
+function printError(texto){
+console.log("\x1b[31m%s\x1b[0m", texto); // rojo
+}
+function printOk(texto){
+    console.log("\x1b[32m%s\x1b[0m", texto); // verde
+}
+
+export default{espacioUno,espacioDos,separador,printError,printOk}
