@@ -11,10 +11,10 @@ function runAll() {
 
 function testTransformarStringEnArrayDeNumeros() {
     console.log("-----TEST 1: transformar string en array de numeros -------")
-    const str = "1;2;3;4;5;6"
-    const separador = ";"
+    const str = "123 | 456 | 789 | 1bc | 10"
+    const separador = "|"
     const arrNumeros = transformUtils.transformarStringEnArrayDeNumeros(str, separador)
-    const arrEsperado = [1, 2, 3, 4, 5, 6]
+    const arrEsperado = [123, 456, 789, 10]
 
     if (typeof arrNumeros === 'object' && util.arraysIguales(arrNumeros, arrEsperado)) {
         util.printOk("TEST OK");
