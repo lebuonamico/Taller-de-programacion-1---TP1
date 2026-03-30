@@ -9,7 +9,7 @@ function leerArchivoComoString(ruta) {
     try {
         return fs.readFileSync(ruta, 'utf-8')
     } catch (error) {
-        console.log("Error al intentar leer un archivo como string: " + error.message);
+        throw new Error("Error al intentar leer un archivo como string: " + error.message);
     }
 }
 
@@ -25,7 +25,7 @@ function escribirTextoEnArchivo(ruta, texto, shouldCreateIfNotExists) {
         }
         fs.writeFileSync(ruta, texto, 'utf-8');
     } catch (error) {
-        console.log("Error al intentar escribir texto en un archivo: " + error.message);
+        throw new Error("Error al intentar escribir texto en un archivo: " + error.message);
     }
 }
 
