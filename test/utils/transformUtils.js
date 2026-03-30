@@ -19,7 +19,7 @@ function testTransformarStringEnArrayDeNumeros() {
     if (typeof arrNumeros === 'object' && util.arraysIguales(arrNumeros, arrEsperado)) {
         util.printOk("TEST OK");
     } else {
-        util.printError("ERROR");
+        util.printError("ERROR.");
     }
     util.separador()
 }
